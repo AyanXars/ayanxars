@@ -39,7 +39,7 @@ header("Pragma: no-cache");
       );
 
       foreach ($data as $x) {
-          echo '<a href="' . $x['url'] . '">' . strtoupper($x['name']) . '</a><br><br><br>';
+          echo '<a href="' . $x['url'] . '">' . $x['name'] . '</a><br><br><br>';
       }
       ?>
     </div>
