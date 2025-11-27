@@ -32,16 +32,7 @@ header("Pragma: no-cache");
     <br><br>
 
     <div id="urls">
-      <?php
-      $data = json_decode(
-          file_get_contents('https://raw.githubusercontent.com/AyanXars/ayanxars/refs/heads/main/urls.json'),
-          true
-      );
-
-      foreach ($data as $x) {
-          echo '<a href="' . $x['url'] . '">' . $x['name'] . '</a><br><br><br>';
-      }
-      ?>
+      <a href="http://gg.xo.je/">gallery</a><br><Br>
     </div>
   </main>
 
