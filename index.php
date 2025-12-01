@@ -32,7 +32,7 @@ header("Pragma: no-cache");
     <br><br>
 
     <div id="urls">
-      <a href="http://gg.xo.je/">gallery</a><br><Br>
+      <a href="http://qs.xo.je/">gallery</a><br><Br>
     </div>
   </main>
 
