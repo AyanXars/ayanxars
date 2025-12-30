@@ -98,7 +98,7 @@ header("Pragma: no-cache");
     <br><br>
     <img src="https://raw.githubusercontent.com/AyanXars/ayanxars/refs/heads/main/pfp.jpg" alt="Profile"
         class="w-32 h-32 mb-6">
-    <br>
+    <br><br>
     <h1 class="text-white uppercase text-[12px] mb-6 tracking-[6px]">
         Ayan Xars
     </h1>
