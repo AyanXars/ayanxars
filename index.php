@@ -44,7 +44,7 @@ header("Pragma: no-cache");
     </style>
 </head>
 
-<body class="bg-white min-h-screen flex flex-col items-left p-10">
+<body class="bg-white min-h-screen flex flex-col items-start p-10">
     <script>
 
 
@@ -83,11 +83,9 @@ header("Pragma: no-cache");
         class="text-blue-600 uppercase text-[20px] tracking-[2.5px] font-normal hover:underline focus:underline">
         x
     </a>
-    <br><br>
-    <div id="jsonLoader" class="flex flex-col items-left gap-10 text-left leading-4">
+    <div id="jsonLoader" class="flex flex-col items-start gap-10 text-left leading-4 my-10">
 
     </div>
-    <br><br>
     <span class="text-black uppercase text-[8px] tracking-[2.5px] font-normal">
         0x<br>AYANXARS<br>070707<br>42069<br>1106<br>BLADERUNNER2049<br>ASXOJE
     </span>
