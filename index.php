@@ -44,25 +44,32 @@ header("Pragma: no-cache");
     </style>
 </head>
 
-<body class="bg-white min-h-screen flex flex-col items-start p-10">
+
+<body
+    class="bg-black text-white min-h-screen flex flex-col items-center p-10 opacity-0 transition-opacity duration-100 ease-in">
     <script>
-
-
         async function loadLinks() {
-            const url = 'https://raw.githubusercontent.com/AyanXars/ayanxars/refs/heads/main/url.json';
+            // Using timestamp to ensure no cache as requested
+            const url = 'https://raw.githubusercontent.com/AyanXars/ayanxars/refs/heads/main/url.json?t=' + new Date().getTime();
             try {
-                const response = await fetch(url);
+                const response = await fetch(url, { cache: "no-store" });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const links = await response.json();
+
+                // Ensure DOM is ready before trying to find the container
+                if (document.readyState === 'loading') {
+                    await new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve));
+                }
+
                 const container = document.getElementById('jsonLoader');
 
                 links.forEach(link => {
                     const a = document.createElement('a');
                     a.href = link.url;
 
-                    a.className = "text-blue-600 uppercase text-[12px] tracking-[3px] font-normal hover:underline focus:underline";
+                    a.className = "text-white uppercase text-[12px] tracking-[3px] font-normal hover:underline focus:underline";
                     a.textContent = link.name;
                     container.appendChild(a);
                 });
@@ -71,25 +78,36 @@ header("Pragma: no-cache");
             }
         }
 
-        loadLinks();
+        const linksLoadedPromise = loadLinks();
+
+        window.addEventListener('load', async () => {
+            await linksLoadedPromise;
+            setTimeout(() => {
+                document.body.classList.remove('opacity-0');
+            }, 1000);
+        });
     </script>
-    <br><br>
-    <br>
-    <h1 class="text-black uppercase text-[30px] mb-6 tracking-[6px]">
+    <div class="h-6 w-full"></div>
+    <img src="https://cdn.jsdelivr.net/gh/AyanXars/ayanxars/pfp.jpg" class="w-[200px] mt-22 mb-6">
+    <div class="h-12 w-full"></div>
+    <h1 class="text-white uppercase text-[30px] mb-6 tracking-[6px]">
         Ayan Xars
     </h1>
-    <br>
+    <div class="h-12 w-full"></div>
     <a href="https://x.com/ayanxars"
-        class="text-blue-600 uppercase text-[20px] tracking-[2.5px] font-normal hover:underline focus:underline">
+        class="text-white uppercase text-[20px] tracking-[2.5px] font-normal hover:underline focus:underline">
         x
     </a>
-    <div id="jsonLoader" class="flex flex-col items-start gap-10 text-left leading-4 my-10">
+    <div class="h-6 w-full"></div>
+    <div id="jsonLoader" class="flex flex-col items-center gap-10 text-center leading-4 my-10">
 
     </div>
-    <span class="text-black uppercase text-[8px] tracking-[2.5px] font-normal">
+    <div class="h-6 w-full"></div>
+    <span class="text-white uppercase text-[8px] tracking-[2.5px] font-normal text-center">
         0x<br>AYANXARS<br>070707<br>42069<br>1106<br>BLADERUNNER2049<br>ASXOJE
     </span>
-    <br><br>
+    <div class="h-12 w-full"></div>
 </body>
+
 
 </html>
