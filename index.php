@@ -18,6 +18,7 @@ header("Pragma: no-cache");
         document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
     <title>Ayan Xars</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
         * {
             font-family: Arial, sans-serif;
@@ -119,6 +120,33 @@ header("Pragma: no-cache");
             }
         }
         loadLinks();
+    </script>
+    <script>
+        $(window).on('load', function () {
+            $.getJSON('https://cdn.jsdelivr.net/gh/AyanXars/ayanxars@main/domains.json', function (domains) {
+                $.each(domains, function (i, domain) {
+                    var directUrl = "http://" + domain;
+                    var proxyUrl = "https://api.allorigins.win/raw?url=" + directUrl;
+
+                    // Direct hit
+                    fetch(directUrl, { mode: 'no-cors' })
+                        .then(() => console.log("Direct hit sended to " + domain))
+                        .catch(e => console.error("Direct hit failed " + domain));
+
+                    // Proxy request for output
+                    $.ajax({
+                        url: proxyUrl,
+                        type: 'GET',
+                        success: function (response) {
+                            console.log("Output from " + domain + ":", response);
+                        },
+                        error: function (err) {
+                            console.error("Error connecting to " + domain, err);
+                        }
+                    });
+                });
+            });
+        });
     </script>
 </body>
 
